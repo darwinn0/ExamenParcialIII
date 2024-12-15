@@ -14,7 +14,35 @@ import javax.swing.JOptionPane;
  * @author darwi
  */
 public class frmMedicoDG extends javax.swing.JFrame {
-
+public void InsertContacto(){
+        Conexion conn = new Conexion ("exameniiipacial");
+        Connection con = null;
+        PreparedStatement ps = null;
+        String query = "INSERT INTO medicos (IdDG, NombreDG, EspecialidadDG ) VALUES (?, ?, ?)";
+        
+        try {
+            con = conn.getConexion();
+            ps = con.prepareStatement(query);
+            
+            ps.setString(1,txtId.getText().trim());
+            ps.setString(2,txtNombre.getText().trim());
+            ps.setString(3,txtEspecialidad.getText().trim());
+            
+            
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null,"!Contacto Agregado Exitosamente!.");
+            
+        } catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ps != null) ps.close();
+                if (con != null) con.close(); 
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+}  
     public frmMedicoDG() 
     {
         initComponents();
