@@ -42,7 +42,7 @@ public class Conexion {
         return c;
      }
 
-    public Connection getConexion(String proyectofinalpoo) {
+    public Connection getConexion(String exameniiipacial) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
