@@ -4,16 +4,19 @@
  */
 package DAODG;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author darwi
  */
 public class frmMedicoDG extends javax.swing.JFrame {
 
-    /**
-     * Creates new form frmMedicoDG
-     */
-    public frmMedicoDG() {
+    public frmMedicoDG() 
+    {
         initComponents();
     }
 
@@ -48,6 +51,11 @@ public class frmMedicoDG extends javax.swing.JFrame {
         jLabel4.setText("Especialidad");
 
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnPaciente.setText("Ir al Registro de Paciente");
         btnPaciente.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +137,14 @@ public class frmMedicoDG extends javax.swing.JFrame {
 
     private void btnPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacienteActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        frmPacienteDG frame = new frmPacienteDG();
+        frame.setVisible(true);
     }//GEN-LAST:event_btnPacienteActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
      * @param args the command line arguments
