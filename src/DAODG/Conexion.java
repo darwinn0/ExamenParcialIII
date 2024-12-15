@@ -8,41 +8,51 @@ import java.sql.*;
  *
  * @author darwi
  */
+import java.sql.Connection;
+
+
 public class Conexion {
-    Connection c;
-    
-    public Conexion(String dbName){
-        
+    private Connection c;
+
+    public Conexion(String dbName) {
         try {
-            /* Driver */
+            // Driver
             String driver = "com.mysql.cj.jdbc.Driver";
-            System.out.println( "=> Cargando el Driver:" );
-            Class.forName( driver );
+            System.out.println("=> Cargando el Driver:");
+            Class.forName(driver);
             System.out.println("Driver OK");
-            /* Definiendo Base de Datos */
-            String url = "jdbc:mysql://localhost:3306/"+dbName;
+
+            // Definiendo Base de Datos
+            String url = "jdbc:mysql://localhost:3306/" + dbName;
             String user = "root";
             String pass = "";
-            /* Conectando */
-            System.out.println( "=> conectando a la BD:" );
-            c = DriverManager.getConnection( url , user , pass );
+
+            // Conectando
+            System.out.println("=> Conectando a la BD:");
+            c = DriverManager.getConnection(url, user, pass);
             System.out.println("Base de Datos OK");
-            }
-        catch( Exception x ) {
+        } catch (ClassNotFoundException e) {
+            System.out.println("Error al cargar el driver!");
+            e.printStackTrace();
+        } catch (SQLException e) {
             System.out.println("Error al tratar de conectar a la BD!");
-            x.printStackTrace();
-        } 
+            e.printStackTrace();
+        }
     }
 
-    public Conexion() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
-     public Connection getConexion(){
+    public Connection getConexion() {
         return c;
-     }
+    }
 
-    public Connection getConexion(String exameniiipacial) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void closeConexion() {
+        try {
+            if (c != null && !c.isClosed()) {
+                c.close();
+                System.out.println("Conexión cerrada.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al cerrar la conexión!");
+            e.printStackTrace();
+        }
     }
 }

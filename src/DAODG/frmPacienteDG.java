@@ -5,8 +5,7 @@
 package DAODG;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,7 +31,7 @@ public class frmPacienteDG extends javax.swing.JFrame {
             
             
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null,"!Contacto Agregado Exitosamente!.");
+            JOptionPane.showMessageDialog(null,"!Agregado Exitosamente!.");
             
         } catch (SQLException e){
             e.printStackTrace();

@@ -5,8 +5,7 @@
 package DAODG;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class frmMedicoDG extends javax.swing.JFrame 
 {
-public void InsertContacto()
+public void InsertMedico()
 {
         Conexion conn = new Conexion ("exameniiipacial");
         Connection con = null;
@@ -32,7 +31,7 @@ public void InsertContacto()
             
             
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null,"!Contacto Agregado Exitosamente!.");
+            JOptionPane.showMessageDialog(null,"!Agregado Exitosamente!.");
             
         } catch (SQLException e){
             e.printStackTrace();
@@ -174,7 +173,7 @@ public void InsertContacto()
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        InsertContacto();
+        InsertMedico();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
