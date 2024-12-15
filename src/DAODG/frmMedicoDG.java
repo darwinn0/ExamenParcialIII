@@ -13,8 +13,10 @@ import javax.swing.JOptionPane;
  *
  * @author darwi
  */
-public class frmMedicoDG extends javax.swing.JFrame {
-public void InsertContacto(){
+public class frmMedicoDG extends javax.swing.JFrame 
+{
+public void InsertContacto()
+{
         Conexion conn = new Conexion ("exameniiipacial");
         Connection con = null;
         PreparedStatement ps = null;
@@ -172,6 +174,7 @@ public void InsertContacto(){
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
+        InsertContacto();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**

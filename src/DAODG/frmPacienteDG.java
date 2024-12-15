@@ -4,12 +4,47 @@
  */
 package DAODG;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author darwi
  */
 public class frmPacienteDG extends javax.swing.JFrame {
 
+    public void InsertPaciente()
+{
+        Conexion conn = new Conexion ("exameniiipacial");
+        Connection con = null;
+        PreparedStatement ps = null;
+        String query = "INSERT INTO pacientes (IdDG, NombreDG, EnfermedadDG ) VALUES (?, ?, ?)";
+        
+        try {
+            con = conn.getConexion();
+            ps = con.prepareStatement(query);
+            
+            ps.setString(1,txtId.getText().trim());
+            ps.setString(2,txtNombre.getText().trim());
+            ps.setString(3,txtEnfermedad.getText().trim());
+            
+            
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null,"!Contacto Agregado Exitosamente!.");
+            
+        } catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ps != null) ps.close();
+                if (con != null) con.close(); 
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+}  
     /**
      * Creates new form frmPacienteDG
      */
@@ -48,6 +83,11 @@ public class frmPacienteDG extends javax.swing.JFrame {
         jLabel4.setText("Enfermedad");
 
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Ir al Registro de medicos ");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -134,6 +174,11 @@ public class frmPacienteDG extends javax.swing.JFrame {
         frmMedicoDG frame = new frmMedicoDG();
         frame.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        InsertPaciente();
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
      * @param args the command line arguments
